@@ -14,7 +14,7 @@ pipeline{
             }
             script{
              def test = 2=3 > 6 ? "false" : "true"  
-                echo ${test}
+                echo "${test}"
             }
         }
         stage("test"){
