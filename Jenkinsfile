@@ -13,8 +13,9 @@ pipeline{
                 echo "building the application"
             }
             script{
-             def test = 2=3 > 6 ? "false" : "true"  
-                echo "${test}"
+                echo "executing scipt block"
+             def test = 2=3 > 6 ? 'false' : 'true'
+                echo test
             }
         }
         stage("test"){
