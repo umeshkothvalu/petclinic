@@ -1,4 +1,5 @@
 From tomcat:9.0.65-jre8-openjdk-slim-buster
+ENV test=test
 COPY tomcat-users.xml /usr/local/tomcat/conf/
 COPY context.xml /usr/local/tomcat/webapps.dist/manager/META-INF/context.xml
 RUN mv /usr/local/tomcat/webapps /usr/local/tomcat/webapps2
