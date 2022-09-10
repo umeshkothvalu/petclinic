@@ -20,6 +20,7 @@ pipeline{
                 echo "Building code"
                 sh "mvn clean package"
             }
+
         }
 
         stage("Buid Image"){
@@ -28,6 +29,7 @@ pipeline{
                 script{
                 image = docker.build registryName + ":$BUILD_NUMBER"
                 }
+
             }
         }
 
