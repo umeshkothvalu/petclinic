@@ -1,33 +1,55 @@
 pipeline{
     agent any
+    environment{
+        nexusUrl="http://43.205.112.249:8082"
+        nexusCredentials="nexus"
+        registryName="petclinic"
+        gitUrl="https://github.com/umeshkothvalu/petclinic.git"
+        image=""
+    }
     stages{
-        stage("init"){
+        stage("Clone"){
             steps{
+                echo "Cloning code from git"
+                git gitUrl
+            }
+        }
 
-                echo "Initializing the application"
-            }
-         
-        }
-        stage("build"){
+        stage("Build Archive"){
             steps{
-                echo "building the application"
-            }
-            script{
-             def test = 2=3 > 6 ? "false" : "true"  
-                echo "${test}"
+                echo "Building code"
+                sh "mvn clean package"
             }
         }
-        stage("test"){
+
+        stage("Buid Image"){
             steps{
-                echo "Testing the application"
+                echo "Building Image"
+                script{
+                image = docker.build registryName + ":$BUILD_NUMBER"
+                }
             }
-         
         }
-        stage("deploy"){
+
+        stage("Push Image"){
+
             steps{
-                echo "Deploying the application"
+                echo "Pushin Image to registry"
+                script{
+                    docker.withRegistry( nexusUrl , nexusCredentials ){
+                        image.push()
+                    }
+                }
             }
-         
         }
+
+        stage("Remove Local Image"){
+            steps{
+               // sh "docker rmi $registry:$BUILD_NUMBER"
+                 echo "Removing Images"
+            }
+        }
+
+
     }
 }
