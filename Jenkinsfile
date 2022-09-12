@@ -43,7 +43,7 @@ pipeline{
 
             }
         }
-     /*   stage("Push Archive"){
+        stage("Push Archive"){
          steps{
             script {
                     // Read POM xml file using 'readMavenPom' step , this step 'readMavenPom' is included in: https://plugins.jenkins.io/pipeline-utility-steps
@@ -88,7 +88,7 @@ pipeline{
                     }
                 }
          }
-        } */
+        } 
         stage("Push Image"){
 
             steps{
