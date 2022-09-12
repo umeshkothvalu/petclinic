@@ -8,7 +8,7 @@ pipeline{
         image=""
     }
     stages{
-        stage("Clone"){
+        stage("Clone.."){
             steps{
                 echo "Cloning code from git.."
                 git gitUrl
