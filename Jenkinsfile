@@ -89,7 +89,7 @@ pipeline{
                 }
          }
         } 
-        stage("Push Image"){
+        stage("Push Image.."){
 
             steps{
                 echo "Pushin Image to registry"
