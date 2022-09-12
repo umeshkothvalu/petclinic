@@ -97,7 +97,7 @@ pipeline{
             steps{
                 echo "Pushin Image to registry"
                 script{
-                    docker.withRegistry( nexusUrl , nexusCredentials ){
+                    docker.withRegistry( nexusUrl , NEXUS_CREDENTIAL_ID ){
                         image.push()
                     }
                 }
