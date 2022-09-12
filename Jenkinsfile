@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment{
-        nexusUrl="http://43.205.112.249:8082"
+        nexusUrl="http://43.205.238.123:8082"
         nexusCredentials="nexus"
         registryName="petclinic"
         gitUrl="https://github.com/umeshkothvalu/petclinic.git"
