@@ -3,7 +3,7 @@ pipeline {
    stages {
       stage('getscm') {
          steps {
-               git credentialsId: 'git-cred', url: 'https://github.com/nareshkotari/spring3-mvc-maven-xml-hello-world.git'
+               git credentialsId: 'git-cred', url: 'https://github.com/umeshkothvalu/petclinic.git'
           
          }
       }         
